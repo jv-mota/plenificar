@@ -1,0 +1,34 @@
+# Ignora os arquivos Dockerfile e docker-compose.yml
+Dockerfile
+docker-compose.yml
+
+# Ignora o arquivo composer.lock
+composer.lock
+
+# Ignora outros arquivos e diretórios desnecessários do Laravel
+node_modules/
+vendor/
+npm-debug.log
+yarn-error.log
+.env.*
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+
+# Ignora arquivos de cache do Laravel
+/bootstrap/cache/*
+/storage/*.key
+/storage/*.meta
+/storage/debugbar/*
+/storage/framework/*
+/storage/logs/*
+/storage/app/public/*
+
+# Ignora arquivos do VSCODE
+.vscode/
+
+# Ignora o próprio arquivo .dockerignore
+.dockerignore
+
+# Ignora o arquivo .editorconfig
+.editorconfig

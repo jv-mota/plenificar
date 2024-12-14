@@ -1,0 +1,75 @@
+version: '3'
+
+services:
+  plenificar-web:
+    image: bitnami/laravel:11
+    container_name: plenificar
+    restart: always
+    ports:
+      - '8989:8000'  # Mapeando a porta 8000 do container para a porta 8989 da máquina local
+    network_mode: net-plenificar
+    volumes:
+      - './:/app'  # Mapeando o diretório atual para /app no container
+    working_dir: /app  # Definindo o diretório de trabalho dentro do container
+    healthcheck:
+      test: ["CMD-SHELL", "php artisan --version"]  # Verifica a versão do Laravel para garantir que o serviço está funcionando
+      interval: 30s
+      timeout: 10s
+      retries: 1
+    command: >
+      sh -c '
+        apt-get update && apt-get install -y \
+        subversion \
+        curl \
+        libpng-dev \
+        libonig-dev \
+        libxml2-dev \
+        vim \
+        zip \
+        unzip &&
+        rm -rf storage/framework/views/* &&
+        rm -rf storage/framework/cache/* &&
+        rm -rf storage/framework/sessions/* &&
+        rm -rf bootstrap/cache/* &&
+        rm -rf vendor   &&
+        chmod -R 775 storage &&
+        chmod -R 775 bootstrap/cache &&
+        chmod -R 775 /var/log &&
+        composer install --optimize-autoloader --no-dev &&
+        php artisan key:generate --no-interaction &&
+        php artisan config:cache &&
+        php artisan route:cache &&
+        php artisan serve --host 0.0.0.0 --port=8000'
+
+  # Configuração do phpMyAdmin para gerenciar o banco de dados
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - '8081:80'  # Mapeando a porta 80 do container para a porta 8081 da máquina local
+    environment:
+      PMA_HOST: db  # Nome do serviço de banco de dados no Docker
+      PMA_PORT: 3306  # Porta do banco de dados
+    networks:
+      - net-plenificar
+
+  # Banco de dados MySQL
+  db:
+    image: bitnami/mysql:latest
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: PLENIFICAR-DB
+      MYSQL_USER: plenificar07@gmail.com
+      MYSQL_PASSWORD: .Pleni7icar@171260
+    ports:
+      - '3306:3306'  # Porta do banco de dados
+    networks:
+      - net-plenificar
+
+networks:
+  net-plenificar:
+    name: net-plenificar
+    external: true  # Usando uma rede externa chamada 'net-plenificar'

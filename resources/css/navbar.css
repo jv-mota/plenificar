@@ -1,0 +1,35 @@
+/* Estilo para os links da navegação */
+a.relative {
+    position: relative;
+    /* Permite o posicionamento absoluto do <span> */
+    padding-bottom: 10px;
+    /* Adiciona um espaço para que a linha de fundo não fique colada no link */
+}
+
+/* Estilo da linha de fundo (underline) */
+a.relative span {
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    /* Ajuste para a linha não ficar colada ao link, mas ao container */
+    width: 0;
+    height: 3px;
+    background-color: #EE0038;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Quando o link é hover */
+a.relative:hover span {
+    width: 1.5rem;
+}
+
+/* Link ativo */
+a.active {
+    color: #EE0038;
+    /* Cor do link ativo */
+}
+
+a.active span {
+    width: 1.5rem;
+    /* Mostra a linha de fundo do link ativo */
+}
