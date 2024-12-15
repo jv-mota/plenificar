@@ -9,7 +9,7 @@
         </div>
 
         <!-- Navegação - Links -->
-        <div class="hidden md:flex space-x-8">
+        <div class="hidden md:flex items-center space-x-8">
             <a href="/" class="text-[#A80027] hover:text-[#EE0038] font-bold relative group nav-link" id="inicio">
                 Início
                 <span class="absolute left-0 bottom-0 w-0 h-[3px] bg-[#EE0038] transition-all group-hover:w-6"></span>
@@ -20,12 +20,16 @@
             </a>
             <a href="/contato" class="text-[#A80027] hover:text-[#EE0038] font-bold relative group nav-link" id="contato">
                 Contato
-                <span class="bg-[#EE0038] transition-all group-hover:w-6"></span>
+                <span class="absolute left-0 bottom-0 w-0 h-[3px] bg-[#EE0038] transition-all group-hover:w-6"></span>
+            </a>
+            <!-- Botão Entrar -->
+            <a href="/login" class="px-4 py-2 bg-[#A80027] text-white fw-bold rounded-md hover:bg-[#EE0038] transition duration-200">
+                Entrar
             </a>
         </div>
 
         <!-- Mobile Menu Button -->
-        <button id="menuToggle" class="block md:hidden text-[#A80027] fw-bolder">
+        <button id="menuToggle" class="block md:hidden text-[#A80027] fw-bold">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
@@ -37,6 +41,9 @@
         <a href="/" class="text-lg font-bold text-[#A80027] hover:text-[#EE0038]">Início</a>
         <a href="/blog" class="text-lg font-bold text-[#A80027] hover:text-[#EE0038]">Blog</a>
         <a href="/contato" class="text-lg font-bold text-[#A80027] hover:text-[#EE0038]">Contato</a>
+        <a href="/login" class="px-4 py-2 bg-[#A80027] text-white fw-bold rounded-md hover:bg-[#EE0038] transition duration-200">
+            Entrar
+        </a>
         <!-- Close Icon -->
         <button id="closeMenu">
             <i class="fa-regular fa-circle-xmark text-[#A80027]" style="font-size: 1.75rem;"></i>
